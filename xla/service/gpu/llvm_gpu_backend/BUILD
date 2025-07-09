@@ -281,3 +281,20 @@ xla_cc_test(
         "@tsl//tsl/platform:test",
     ],
 )
+
+xla_cc_test(
+    name = "rocm_rnn_codegen_test",
+    size = "small",
+    srcs = ["rocm_rnn_codegen_test.cc"],
+    tags = [
+        "rocm-only",
+        "gpu",
+    ],
+    deps = [
+        ":amdgpu_backend",
+        "//xla/service/gpu:gpu_executable",
+        "//xla/service/gpu/tests:gpu_codegen_test",
+        "//xla/tests:xla_internal_test_main",
+        "@tsl//tsl/platform:test",
+    ],
+)
