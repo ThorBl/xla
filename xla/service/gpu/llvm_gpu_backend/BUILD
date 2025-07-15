@@ -292,6 +292,8 @@ xla_cc_test(
     ],
     deps = [
         ":amdgpu_backend",
+        "//xla/service/gpu:rocm_rnn_test_helper",
+        "//xla/tests:llvm_irgen_test_base",
         "//xla/service/gpu:gpu_executable",
         "//xla/service/gpu/tests:gpu_codegen_test",
         "//xla/tests:xla_internal_test_main",

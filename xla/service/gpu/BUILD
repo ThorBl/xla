@@ -146,6 +146,29 @@ cc_library(
     ],
 )
 
+cc_library(
+    name = "rocm_rnn_test_helper",
+    srcs = ["rocm_rnn_test_helper.cc"],
+    alwayslink = 1,
+    testonly=1,
+    deps = [
+        "//xla/stream_executor/rocm:miopen_plugin",
+        "//xla/stream_executor:plugin_registry",
+        "//xla/service:custom_call_target_registry",
+        "//xla/service/gpu:stream_executor_util",
+        "//xla/stream_executor:dnn",
+        "//xla/tsl/platform:statusor",
+        "//xla/ffi",
+        "//xla/ffi:execution_context",
+        "//xla/ffi:ffi_api",
+        "//xla/ffi/api:c_api",
+        "@local_config_rocm//rocm:miopen",
+        "@com_google_absl//absl/log:check",
+        "@com_google_absl//absl/status:statusor",
+        "@com_google_absl//absl/strings",
+    ],
+)
+
 tf_proto_library(
     name = "launch_dimensions_proto",
     srcs = ["launch_dimensions.proto"],
